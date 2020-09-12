@@ -1,0 +1,29 @@
+html {
+  color: #333;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background: #111;
+  color: white;
+  padding: 1rem 5vw;
+}
+
+header a,
+header a:hover {
+  color: inherit;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+main {
+  margin: 2rem auto;
+  max-width: 500px;
+  padding: 0;
+}
