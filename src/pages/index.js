@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styles from './index.module.css';
-import Table from '../components/table.js';
+import { Link } from 'gatsby';
+
+import Layout from '../components/layout';
+import Table from '../components/table';
+import Loading from '../components/loading';
+
+import { API_URL } from '../constants';
 
 const columns = [
   {
@@ -22,7 +27,7 @@ const columns = [
     title: 'Operations',
     dataIndex: '',
     key: 'operations',
-    render: ({ userId }) => <a href='#'>View User {userId}</a>,
+    render: ({ userId }) => <Link to={`/users/${userId}`}>View User</Link>,
   },
 ];
 
@@ -35,7 +40,7 @@ export default function Home() {
 
     if (status !== 'loading') return;
 
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch(`${API_URL}/posts`)
       .then((res) => {
         if (canceled === true) return;
 
@@ -59,13 +64,8 @@ export default function Home() {
   }, [status]);
 
   return (
-    <main>
-      <h1 className={styles.heading}>Posts</h1>
-      {posts ? (
-        <Table columns={columns} data={posts} />
-      ) : (
-        <p className={styles.loading}>loading posts</p>
-      )}
-    </main>
+    <Layout>
+      {posts ? <Table columns={columns} data={posts} /> : <Loading />}
+    </Layout>
   );
 }
