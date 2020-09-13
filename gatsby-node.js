@@ -3,4 +3,8 @@ exports.onCreatePage = ({ page, actions }) => {
     page.matchPath = '/users/*';
     actions.createPage(page);
   }
+  if (page.path.match(/^\/posts/)) {
+    page.matchPath = '/posts/*';
+    actions.createPage(page);
+  }
 };

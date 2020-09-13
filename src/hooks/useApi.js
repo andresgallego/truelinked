@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export const useApi = (url) => {
+export const API_URL = 'https://jsonplaceholder.typicode.com';
+
+export const useApi = (params) => {
   const [status, setStatus] = useState('loading');
   const [data, setData] = useState(null);
 
@@ -9,7 +11,7 @@ export const useApi = (url) => {
 
     if (status !== 'loading') return;
 
-    fetch(url)
+    fetch(`${API_URL}${params}`)
       .then((res) => {
         if (canceled === true) return;
 
@@ -30,7 +32,7 @@ export const useApi = (url) => {
     return () => {
       canceled = true;
     };
-  }, [status]);
+  }, [params, status]);
 
   return [{ data, status }];
 };

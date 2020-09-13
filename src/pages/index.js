@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import styles from './index.module.css';
+
 import { useApi } from '../hooks/useApi';
 
 import Layout from '../components/layout';
 import Table from '../components/table';
 import Loading from '../components/loading';
-
-import { API_URL } from '../constants';
 
 const columns = [
   {
@@ -29,12 +29,18 @@ const columns = [
     title: 'Operations',
     dataIndex: '',
     key: 'operations',
-    render: ({ userId }) => <Link to={`/users/${userId}`}>View User</Link>,
+    width: 200,
+    render: ({ id, userId }) => (
+      <span className={styles.column}>
+        <Link to={`/posts/${id}`}>Read Post</Link>
+        <Link to={`/users/${userId}`}>About the author</Link>
+      </span>
+    ),
   },
 ];
 
 export default function Home() {
-  const [{ data: posts }] = useApi(`${API_URL}/posts`);
+  const [{ data: posts }] = useApi(`/posts`);
 
   return (
     <Layout>
