@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { LoadingOutlined } from '@ant-design/icons';
+
 import styles from './loading.module.css';
 
 export default function Loading() {
-  return <p className={styles.loading}>loading...</p>;
+  return (
+    <div className={styles.loading}>
+      <LoadingOutlined />
+    </div>
+  );
 }
