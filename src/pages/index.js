@@ -8,6 +8,9 @@ import { useApi } from '../hooks/useApi';
 import Layout from '../components/layout';
 import Table from '../components/table';
 import Loading from '../components/loading';
+import Error from '../components/error';
+
+import { ERROR } from '../constants';
 
 const columns = [
   {
@@ -40,11 +43,15 @@ const columns = [
 ];
 
 export default function Home() {
-  const [{ data: posts }] = useApi(`/posts`);
+  const { data, status } = useApi(`/posts`);
+
+  if (status === ERROR) {
+    return <Error redirectTo='/' />;
+  }
 
   return (
     <Layout>
-      {posts ? <Table columns={columns} data={posts} /> : <Loading />}
+      {data ? <Table columns={columns} data={data} /> : <Loading />}
     </Layout>
   );
 }

@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react';
 
-export const API_URL = 'https://jsonplaceholder.typicode.com';
+import { API_URL, ERROR, LOADED, LOADING } from '../constants';
 
-export const useApi = (params) => {
-  const [status, setStatus] = useState('loading');
+export const useApi = (path) => {
+  const [status, setStatus] = useState(LOADING);
   const [data, setData] = useState(null);
 
   useEffect(() => {
     let canceled = false;
 
-    if (status !== 'loading') return;
+    if (status !== LOADING) return;
 
-    fetch(`${API_URL}${params}`)
+    fetch(`${API_URL}${path}`)
       .then((res) => {
         if (canceled === true) return;
 
         if (res.status !== 200) {
           console.error('Error loading posts!');
           console.error(res);
+          setStatus(ERROR);
           return;
         }
 
@@ -25,14 +26,18 @@ export const useApi = (params) => {
       })
       .then((res) => {
         setData(res);
-        setStatus('loaded');
+        setStatus(LOADED);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setStatus(ERROR);
+        return;
+      });
 
     return () => {
       canceled = true;
     };
-  }, [params, status]);
+  }, [path, status]);
 
-  return [{ data, status }];
+  return { data, status };
 };
