@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
+
+import { useApi } from '../hooks/useApi';
 
 import Layout from '../components/layout';
 import Table from '../components/table';
@@ -32,36 +34,7 @@ const columns = [
 ];
 
 export default function Home() {
-  const [status, setStatus] = useState('loading');
-  const [posts, setPosts] = useState(null);
-
-  useEffect(() => {
-    let canceled = false;
-
-    if (status !== 'loading') return;
-
-    fetch(`${API_URL}/posts`)
-      .then((res) => {
-        if (canceled === true) return;
-
-        if (res.status !== 200) {
-          console.error('Error loading posts!');
-          console.error(res);
-          return;
-        }
-
-        return res.json();
-      })
-      .then((res) => {
-        setPosts(res);
-        setStatus('loaded');
-      })
-      .catch((error) => console.error(error));
-
-    return () => {
-      canceled = true;
-    };
-  }, [status]);
+  const [{ data: posts }] = useApi(`${API_URL}/posts`);
 
   return (
     <Layout>
