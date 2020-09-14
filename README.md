@@ -7,7 +7,7 @@
   Project powered by Gatsby
 </h1>
 
-_👀 [Check out the published site](https://tender-almeida-99486d.netlify.app/)._
+_👀 [ Check out the published site](https://tender-almeida-99486d.netlify.app/)._
 
 ## 🚀 Quick start
 
