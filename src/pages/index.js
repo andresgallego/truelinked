@@ -17,11 +17,13 @@ const columns = [
     title: 'Id',
     dataIndex: 'id',
     key: 'id',
+    responsive: ['md'],
   },
   {
     title: 'User Id',
     dataIndex: 'userId',
     key: 'userId',
+    responsive: ['md'],
   },
   {
     title: 'Title',
@@ -32,7 +34,6 @@ const columns = [
     title: 'Operations',
     dataIndex: '',
     key: 'operations',
-    width: 200,
     render: ({ id, userId }) => (
       <span className={styles.column}>
         <Link to={`/posts/${id}`}>Read Post</Link>
