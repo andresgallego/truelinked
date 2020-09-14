@@ -11,11 +11,11 @@ _👀 [Check out the published site](https://tender-almeida-99486d.netlify.app/)
 
 ## 🚀 Quick start
 
-1.  **Run the project.**
+**Run the project.**
 
-    Navigate into your new site’s directory and start it up.
+Navigate into the site’s directory and start it up.
 
-    ```shell
-    yarn install
-    yarn develop
-    ```
+```shell
+yarn install
+yarn develop
+```
