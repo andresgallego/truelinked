@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { LoadingOutlined } from '@ant-design/icons';
 
 import styles from './loading.module.css';

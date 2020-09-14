@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import styles from './index.module.css';
+import Error from '../components/error';
+import Layout from '../components/layout';
+import Loading from '../components/loading';
+import Table from '../components/table';
 
 import { useApi } from '../hooks/useApi';
 
-import Layout from '../components/layout';
-import Table from '../components/table';
-import Loading from '../components/loading';
-import Error from '../components/error';
-
 import { ERROR } from '../constants';
+
+import styles from './index.module.css';
 
 const columns = [
   {

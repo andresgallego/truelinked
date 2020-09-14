@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+
 import Home from '../index';
 
 import { useApi } from '../../hooks/useApi';
@@ -35,13 +36,14 @@ describe('Posts', () => {
 
     useApi.mockReturnValue({ data: posts });
     render(<Home />);
-    expect(useApi).toHaveBeenCalledWith('/posts');
-    expect(useApi).toHaveBeenCalledTimes(2);
     expect(screen.getByText(title)).toBeInTheDocument();
     expect(screen.queryByText('Reload')).not.toBeInTheDocument();
 
     useApi.mockReturnValue({ status: 'error' });
     render(<Home />);
     expect(screen.getByText('Reload')).toBeInTheDocument();
+
+    expect(useApi).toHaveBeenCalledWith('/posts');
+    expect(useApi).toHaveBeenCalledTimes(3);
   });
 });

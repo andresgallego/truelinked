@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { useApi } from '../hooks/useApi';
-
+import Error from '../components/error';
 import Layout from '../components/layout';
 import Loading from '../components/loading';
 import Post from '../components/post';
-import Error from '../components/error';
+
+import { useApi } from '../hooks/useApi';
 
 import { ERROR } from '../constants';
 

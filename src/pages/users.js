@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { useApi } from '../hooks/useApi';
-
-import Layout from '../components/layout';
-import Profile from '../components/profile';
-import Loading from '../components/loading';
-
 import Error from '../components/error';
+import Layout from '../components/layout';
+import Loading from '../components/loading';
+import Profile from '../components/profile';
+
+import { useApi } from '../hooks/useApi';
 
 import { ERROR } from '../constants';
 
